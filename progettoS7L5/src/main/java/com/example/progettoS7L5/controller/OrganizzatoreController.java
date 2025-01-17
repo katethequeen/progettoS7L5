@@ -4,6 +4,7 @@ import com.example.progettoS7L5.entities.Organizzatore;
 import com.example.progettoS7L5.entities.User;
 import com.example.progettoS7L5.services.OrganizzatoreSrv;
 import com.example.progettoS7L5.services.UserSrv;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,14 +16,14 @@ import java.util.List;
 @RequestMapping("/events")
 public class OrganizzatoreController {
 
-    public class EventController {
+
         @Autowired
         private OrganizzatoreSrv organizzatoreSrv;
         @Autowired
         private UserSrv userSrv;
 
         @PostMapping
-        public ResponseEntity<Organizzatore> createEvent(@RequestBody Organizzatore event) {
+        public ResponseEntity<Organizzatore> createEvent(@RequestBody @Valid Organizzatore event) {
             return new ResponseEntity<>(organizzatoreSrv.createEvent(event), HttpStatus.CREATED);
         }
 
@@ -32,4 +33,4 @@ public class OrganizzatoreController {
             return new ResponseEntity<>(organizzatoreSrv.findEventsByOrganizer(organizer), HttpStatus.OK);
         }
     }
-    }
+

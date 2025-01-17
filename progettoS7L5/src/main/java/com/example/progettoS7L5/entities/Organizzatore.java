@@ -1,8 +1,12 @@
 package com.example.progettoS7L5.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Data
@@ -12,23 +16,19 @@ public class Organizzatore {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column(nullable = false)
+    @NotBlank
+    @Size(min = 3, max = 50)
     private String title;
-
-    @Column(nullable = false)
+    @NotBlank
     private String description;
-
-    @Column(nullable = false)
-    private Date date;
-
-    @Column(nullable = false)
+    @NotNull
+    private LocalDateTime date;
+    @NotBlank
     private String location;
-
-    @Column(nullable = false)
-    private Integer seats;
+    @NotNull
+    private Integer seatsAvailable;
 
     @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "organizer_id")
     private User organizer;
 }

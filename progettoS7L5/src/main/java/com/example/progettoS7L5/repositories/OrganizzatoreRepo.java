@@ -1,8 +1,8 @@
 package com.example.progettoS7L5.repositories;
 
 import com.example.progettoS7L5.entities.Organizzatore;
+import com.example.progettoS7L5.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.security.core.userdetails.User;
 
 import java.util.List;
 
